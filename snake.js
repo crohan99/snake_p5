@@ -3,8 +3,9 @@ class Snake {
     this.size = 10;
     this.x = width / 2;
     this.y = height / 2;
-    this.xSpeed = this.size / 5;
-    this.ySpeed = this.size / 5;
+    this.baseVelocity = this.size / 5;
+    this.xSpeed = 0;
+    this.ySpeed = 0;
   }
 
   drawSnake() {
@@ -13,7 +14,8 @@ class Snake {
   }
 
   moveSnake() {
-    this.x = (this.x % width) + this.xSpeed;
-    this.y = (this.y % height) + this.ySpeed;
+    this.x = (((this.x % width) + width) % width) + this.xSpeed;
+    this.y = (((this.y % height) + height) % height) + this.ySpeed;
+    console.log(`(${this.x},${this.y})`);
   }
 }
